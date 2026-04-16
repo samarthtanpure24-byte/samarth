@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shopping Payment System</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: #333;
+      min-height: 100vh;
+    }
+    .container {
+      display: flex;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .products-section, .payment-section {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      flex: 1;
+    }
+    h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 25px;
+    }
+    .product {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .product-info {
+      flex: 1;
+    }
+    .product-name {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    .product-price {
+      color: #27ae60;
+      font-weight: bold;
+    }
+    .add-to-cart {
+      padding: 8px 15px;
+      background-color: #3498db;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    .add-to-cart:hover {
+      background-color: #2980b9;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .cart-total {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 2px solid #eee;
+      text-align: right;
+    }
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      box-sizing: border-box;
+      font-family: inherit;
+      transition: all 0.3s;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: #3498db;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+      outline: none;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #3498db;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      width: 100%;
+      transition: all 0.3s;
+    }
+    button:hover {
+      background-color: #2980b9;
+      transform: translateY(-2px);
+    }
+    button:disabled {
+      background-color: #95a5a6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .error {
+      color: #e74c3c;
+      font-size: 0.85em;
+      margin-top: 5px;
+    }
+    .success {
+      color: #27ae60;
+      font-size: 1em;
+      margin-top: 15px;
+      text-align: center;
+      padding: 20px;
+      background-color: #e8f5e9;
+      border-radius: 8px;
+      border: 1px solid #a5d6a7;
+    }
+    .payment-methods {
+      margin-top: 15px;
+    }
+    .payment-method {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .payment-method input {
+      width: auto;
+      margin-right: 10px;
+    }
+    .empty-cart {
+      text-align: center;
+      color: #95a5a6;
+      padding: 20px;
+    }
+    .form-group {
+      display: flex;
+      gap: 15px;
+    }
+    .form-group > div {
+      flex: 1;
+    }
+    .address-group {
+      margin-top: 15px;
+    }
+    /* Enhanced success message styles */
+    .success-icon {
+      font-size: 3em;
+      margin-bottom: 15px;
+      color: #4caf50;
+    }
+    .success-title {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .order-number {
+      background-color: #e8f5e9;
+      padding: 8px 15px;
+      border-radius: 20px;
+      display: inline-block;
+      margin: 10px 0;
+      font-weight: bold;
+    }
+    .continue-shopping {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #4caf50;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      width: auto;
+      display: inline-block;
+    }
+    .continue-shopping:hover {
+      background-color: #43a047;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="products-section">
+    <h2>Our Products</h2>
+    
+    <div class="product">
+      <div class="product-info">
+        <div class="product-name"> chocolate</div>
+        <div class="product-description">Basic product with essential flavour</div>
+      </div>
+      <div class="product-price">₹499</div>
+      <button class="add-to-cart" data-id="1" data-name="orange" data-price="499">add product quantity</button>
+    </div>
+    
+    
+  
+  <div class="payment-section">
+    <h2>Your Cart</h2>
+    <div id="cart-items">
+      <div class="empty-cart">Your cart is empty</div>
+    </div>
+    <div id="cart-total" class="cart-total" style="display: none;">Total: ₹499</div>
+    
+    <div id="payment-form" style="display: none;">
+      <h2>Customer & Payment Details</h2>
+      <form id="paymentForm">
+        <div class="form-group">
+          <div>
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" name="first-name" required placeholder="Enter your first name">
+          </div>
+          <div>
+            <label for="last-name">Last Name</label>
+            <input type="text" id="last-name" name="last-name" required placeholder="Enter your last name">
+          </div>
+        </div>
+        
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your email address">
+        
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{10,15}" required placeholder="Enter your phone number">
+        
+        <div class="address-group">
+          <label for="address">Street Address</label>
+          <input type="text" id="address" name="address" required placeholder="Enter your street address">
+          
+          <div class="form-group">
+            <div>
+              <label for="city">City</label>
+              <input type="text" id="city" name="city" required placeholder="Enter your city">
+            </div>
+            <div>
+              <label for="state">State</label>
+              <input type="text" id="state" name="state" required placeholder="Enter your state">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <div>
+              <label for="zip">ZIP Code</label>
+              <input type="text" id="zip" name="zip" required placeholder="Enter your ZIP code">
+            </div>
+            <div>
+              <label for="country">Country</label>
+              <select id="country" name="country" required>
+                <option value="">Select Country</option>
+                <option value="IN" selected>India</option>
+                <option value="US">United States</option>
+                <option value="UK">United Kingdom</option>
+                <option value="CA">Canada</option>
+                <option value="AU">Australia</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <label>Payment Method</label>
+        <div class="payment-methods">
+          <label class="payment-method">
+            <input type="radio" name="payment-method" value="upi" checked> UPI Payment
+          </label>
+          <label class="payment-method">
+            <input type="radio" name="payment-method" value="card"> Credit/Debit Card
+          </label>
+          <label class="payment-method">
+            <input type="radio" name="payment-method" value="netbanking"> Net Banking
+          </label>
+          <label class="payment-method">
+            <input type="radio" name="payment-method" value="cod"> Cash on Delivery
+          </label>
+        </div>
+        
+        <div id="payment-details">
+          <!-- Payment method specific fields will appear here -->
+        </div>
+        
+        <label for="notes">Order Notes (Optional)</label>
+        <textarea id="notes" name="notes" rows="3" placeholder="Any special instructions for your order..."></textarea>
+        
+        <button type="submit" id="pay-now">Pay Now</button>
+      </form>
+    </div>
+    
+    <div id="payment-success" style="display: none;">
+      <div class="success">
+        <div class="success-icon">✓</div>
+        <div class="success-title">Payment Successful!</div>
+        <p>Thank you for your purchase. Your order has been confirmed.</p>
+        <div class="order-number">Order #: <span id="order-id">${generateOrderId()}</span></div>
+        
+        <div id="order-details" style="margin-top: 15px; text-align: left;">
+          <!-- Order details will be inserted here -->
+        </div>
+        
+        <p style="margin-top: 20px;">A confirmation email has been sent to your registered email address.</p>
+        <button class="continue-shopping" onclick="location.reload()">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Shopping cart functionality
+  let cart = [];
+  
+  // DOM elements
+  const addToCartButtons = document.querySelectorAll('.add-to-cart');
+  const cartItemsContainer = document.getElementById('cart-items');
+  const cartTotalElement = document.getElementById('cart-total');
+  const paymentForm = document.getElementById('payment-form');
+  const paymentSuccess = document.getElementById('payment-success');
+  const orderDetails = document.getElementById('order-details');
+  
+  // Generate random order ID
+  function generateOrderId() {
+    return 'ORD-' + Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
+  }
+  
+  // Add to cart event listeners
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const productId = this.getAttribute('data-id');
+      const productName = this.getAttribute('data-name');
+      const productPrice = parseInt(this.getAttribute('data-price'));
+      
+      // Check if product already in cart
+      const existingItem = cart.find(item => item.id === productId);
+      
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({
+          id: productId,
+          name: productName,
+          price: productPrice,
+          quantity: 1
+        });
+      }
+      
+      updateCart();
+    });
+  });
+  
+  // Update cart display
+  function updateCart() {
+    if (cart.length === 0) {
+      cartItemsContainer.innerHTML = '<div class="empty-cart">Your cart is empty</div>';
+      cartTotalElement.style.display = 'none';
+      paymentForm.style.display = 'none';
+      paymentSuccess.style.display = 'none';
+      return;
+    }
+    
+    let cartHTML = '';
+    let total = 0;
+    
+    cart.forEach(item => {
+      const itemTotal = item.price * item.quantity;
+      total += itemTotal;
+      
+      cartHTML += `
+        <div class="cart-item">
+          <div>
+            <strong>${item.name}</strong>
+            <div>₹${item.price} x ${item.quantity}</div>
+          </div>
+          <div>₹${itemTotal}</div>
+        </div>
+      `;
+    });
+    
+    cartItemsContainer.innerHTML = cartHTML;
+    cartTotalElement.textContent = `Total: ₹${total}`;
+    cartTotalElement.style.display = 'block';
+    paymentForm.style.display = 'block';
+    paymentSuccess.style.display = 'none';
+    
+    // Update payment button text
+    document.getElementById('pay-now').textContent = `Pay ₹${total}`;
+  }
+  
+  // Payment method selection
+  const paymentMethods = document.querySelectorAll('input[name="payment-method"]');
+  const paymentDetails = document.getElementById('payment-details');
+  
+  paymentMethods.forEach(method => {
+    method.addEventListener('change', function() {
+      updatePaymentDetails(this.value);
+    });
+  });
+  
+  // Update payment details based on selected method
+  function updatePaymentDetails(method) {
+    let detailsHTML = '';
+    
+    switch(method) {
+      case 'upi':
+        detailsHTML = `
+          <label for="upi-id">UPI ID</label>
+          <input type="text" id="upi-id" name="upi-id" required placeholder="yourname@upi">
+        `;
+        break;
+      case 'card':
+        detailsHTML = `
+          <label for="card-number">Card Number</label>
+          <input type="text" id="card-number" name="card-number" required placeholder="1234 5678 9012 3456">
+          
+          <div style="display: flex; gap: 10px; margin-top: 15px;">
+            <div style="flex: 1;">
+              <label for="expiry-date">Expiry Date</label>
+              <input type="text" id="expiry-date" name="expiry-date" required placeholder="MM/YY">
+            </div>
+            <div style="flex: 1;">
+              <label for="cvv">CVV</label>
+              <input type="text" id="cvv" name="cvv" required placeholder="123">
+            </div>
+          </div>
+          
+          <label for="card-name">Name on Card</label>
+          <input type="text" id="card-name" name="card-name" required placeholder="Your Name">
+        `;
+        break;
+      case 'netbanking':
+        detailsHTML = `
+          <label for="bank">Select Bank</label>
+          <select id="bank" name="bank" required>
+            <option value="">Select your bank</option>
+            <option value="sbi">State Bank of India</option>
+            <option value="hdfc">HDFC Bank</option>
+            <option value="icici">ICICI Bank</option>
+            <option value="axis">Axis Bank</option>
+            <option value="other">Other Bank</option>
+          </select>
+        `;
+        break;
+      case 'cod':
+        detailsHTML = `
+          <div style="background-color: #f8f9fa; padding: 15px; border-radius: 6px; margin-top: 15px;">
+            <p style="margin: 0;">You'll pay cash when your order is delivered.</p>
+          </div>
+        `;
+        break;
+    }
+    
+    paymentDetails.innerHTML = detailsHTML;
+  }
+  
+  // Initialize with UPI payment details
+  updatePaymentDetails('upi');
+  
+  // Form submission
+  document.getElementById("paymentForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    
+    // Collect form data
+    const formData = {
+      customer: {
+        firstName: document.getElementById('first-name').value,
+        lastName: document.getElementById('last-name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        address: {
+          street: document.getElementById('address').value,
+          city: document.getElementById('city').value,
+          state: document.getElementById('state').value,
+          zip: document.getElementById('zip').value,
+          country: document.getElementById('country').value
+        }
+      },
+      payment: {
+        method: document.querySelector('input[name="payment-method"]:checked').value,
+        details: {}
+      },
+      order: {
+        items: cart,
+        notes: document.getElementById('notes').value,
+        total: calculateTotal()
+      }
+    };
+    
+    // Collect payment method specific details
+    const paymentMethod = formData.payment.method;
+    if (paymentMethod === 'upi') {
+      formData.payment.details.upiId = document.getElementById('upi-id').value;
+    } else if (paymentMethod === 'card') {
+      formData.payment.details = {
+        cardNumber: document.getElementById('card-number').value,
+        expiryDate: document.getElementById('expiry-date').value,
+        cvv: document.getElementById('cvv').value,
+        cardName: document.getElementById('card-name').value
+      };
+    } else if (paymentMethod === 'netbanking') {
+      formData.payment.details.bank = document.getElementById('bank').value;
+    }
+    
+    // In a real app, you would send this data to your server for processing
+    console.log('Form data:', formData);
+    
+    // For demo, we'll just show a success message with order details
+    paymentForm.style.display = 'none';
+    paymentSuccess.style.display = 'block';
+    
+    // Display order details
+    let orderHTML = `
+      <div><strong>Order Summary:</strong></div>
+      <div style="margin-top: 10px;">
+        ${cart.map(item => `
+          <div>${item.name} - ₹${item.price} x ${item.quantity} = ₹${item.price * item.quantity}</div>
+        `).join('')}
+      </div>
+      <div style="margin-top: 10px;"><strong>Total: ₹${calculateTotal()}</strong></div>
+      <div style="margin-top: 15px;"><strong>Shipping to:</strong></div>
+      <div>${formData.customer.firstName} ${formData.customer.lastName}</div>
+      <div>${formData.customer.address.street}</div>
+      <div>${formData.customer.address.city}, ${formData.customer.address.state} ${formData.customer.address.zip}</div>
+      <div>${formData.customer.address.country}</div>
+      <div style="margin-top: 10px;">Phone: ${formData.customer.phone}</div>
+      <div>Email: ${formData.customer.email}</div>
+    `;
+    
+    if (formData.order.notes) {
+      orderHTML += `<div style="margin-top: 10px;"><strong>Notes:</strong> ${formData.order.notes}</div>`;
+    }
+    
+    orderDetails.innerHTML = orderHTML;
+    
+    // Clear the cart
+    cart = [];
+    updateCart();
+  });
+  
+  // Calculate total amount
+  function calculateTotal() {
+    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+  }
+</script>
+
+</body>
+</html>
