@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Choco Boutique</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- AOS for scroll animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    :root{
+      --pink-50: #fff7fb;
+      --pink-200: #ffd6e8;
+      --choco-700: #f5007f;
+      --choco-800: #ff07b5;
+      --gold: #d4af37;
+      --accent-pink: #e36aa6;
+    }
+ 
+
+ 
+
+    body.hero-section {
+  background-image: url('harilate.png');
+  background-size: cover;
+  background-position: right center;
+
+ 
+}
+    
+    {background: linear-gradient(180deg,var(--pink-50), #fa2f80);}
+    /* subtle cocoa texture using radial-gradients */
+    .cocoa-bg{
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(63,31,29,0.06) 0 2%, transparent 6%),
+        radial-gradient(circle at 80% 70%, rgba(63,31,29,0.04) 0 3%, transparent 8%);
+    }
+    /* decorative dripping chocolate */
+    .drip-svg{filter: drop-shadow(0 6px 12px rgba(0,0,0,0.12));}
+    /* gold shimmer */
+    .gold-text{background: linear-gradient(90deg, #f6e3a9, #e6bf5a); -webkit-background-clip: text; background-clip: text; color: transparent}
+    .glass{background: rgba(255,255,255,0.72); backdrop-filter: blur(6px);}
+    /* form focus ring */
+    .focus-ring:focus{outline: none; box-shadow: 0 0 0 4px rgba(227,106,166,0.12);}
+    /* subtle floating */
+    @keyframes floaty{0%{transform: translateY(0)}50%{transform: translateY(-6px)}100%{transform: translateY(0)}}
+    .floaty{animation: floaty 6s ease-in-out infinite}
+  </style>
+</head>
+<body class="font-inter antialiased text-gray-800">
+
+  <!-- Top hero with dripping chocolate -->
+  <header class="relative overflow-hidden cocoa-bg">
+    <div class="absolute inset-x-0 top-0 transform -translate-y-8">
+      <!-- Dripping chocolate SVG -->
+      <svg class="w-full drip-svg" viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,0 C150,60 250,0 360,40 C470,80 600,0 720,40 C840,80 950,0 1200,40 L1200,120 L0,120 Z" fill="#3f1f1d"/>
+      </svg>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-6 py-24 relative z-20">
+      <div class="grid lg:grid-cols-2 gap-8 items-center">
+        <div data-aos="fade-right">
+          <h1 class="text-4xl lg:text-5xl font-extrabold leading-tight text-choco-800">Contact <span class="gold-text">Choco Boutique</span></h1>
+          <p class="mt-4 text-lg text-gray-700 max-w-xl">Questions, custom orders, corporate gifting or tastings — we’re here to craft the perfect chocolate experience for you. Reach out and we'll reply within 1 business day.</p>
+
+          <div class="mt-6 flex gap-3 items-center">
+            <a href="#visit" class="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-gradient-to-r from-pink-400 to-pink-500 text-white font-semibold shadow-lg hover:scale-105 transform transition">Visit Our Store</a>
+            <a href="#form" class="inline-flex items-center gap-2 px-4 py-3 rounded-full border border-pink-200 text-pink-700 bg-white glass">Send a Message</a>
+          </div>
+
+          <ul class="mt-6 space-y-3 text-sm text-gray-600">
+            <li><strong>Address:</strong> 123 Cocoa Lane, Chocolate City</li>
+            <li><strong>Phone:</strong> <a href="tel:+919876543210" class="text-choco-700">+91 98765 43210</a></li>
+            <li><strong>Email:</strong> <a href="mailto:hello@chocoboutique.com" class="text-choco-700">hello@chocoboutique.com</a></li>
+          </ul>
+        </div>
+
+        <div data-aos="zoom-in" class="relative">
+          <!-- Decorative box with product image and gold ribbon -->
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl floaty" style="width:420px;max-width:100%;margin-left:auto;">
+            <img src="harilate.png" alt="Assorted luxury chocolates" class="w-full h-64 object-cover">
+            <div class="absolute left-4 top-4 px-3 py-1 rounded-full text-sm font-semibold" style="background: linear-gradient(90deg, rgba(212,175,55,0.95), rgba(255,234,167,0.95));">Small-Batch • Bean-to-Bar</div>
+            <div class="absolute right-4 bottom-4 bg-gradient-to-r from-pink-400 to-pink-500 text-white px-4 py-2 rounded-full font-medium">Book a Tasting</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- chocolate top shadow -->
+    <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-transparent to-black/6"></div>
+  </header>
+
+  <!-- Main contact area -->
+  <main class="max-w-6xl mx-auto px-6 -mt-12">
+    <section id="form" class="grid lg:grid-cols-2 gap-8">
+
+      <!-- Form card -->
+      <div data-aos="fade-up" class="bg-white rounded-3xl p-8 shadow-xl glass">
+        <h2 class="text-2xl font-semibold text-choco-800">Send us a note</h2>
+        <p class="mt-2 text-sm text-gray-600">Tell us about your order, event, or inquiry — we'll tailor a delicious response.</p>
+
+        <form id="contactForm" class="mt-6 space-y-4" onsubmit="return handleSubmit(event)">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <label class="block">
+              <span class="text-sm text-gray-700">Full name</span>
+              <input name="name" required class="mt-1 block w-full rounded-xl border border-pink-200 p-3 focus:ring-0 focus:ring-offset-0 focus:outline-none focus:ring-4 focus:ring-pink-200 focus:border-pink-400" placeholder="Your name">
+            </label>
+
+            <label class="block">
+              <span class="text-sm text-gray-700">Email</span>
+              <input name="email" type="email" required class="mt-1 block w-full rounded-xl border border-pink-200 p-3 focus:outline-none focus:ring-4 focus:ring-pink-200" placeholder="you@example.com">
+            </label>
+          </div>
+
+          <label class="block">
+            <span class="text-sm text-gray-700">Phone (optional)</span>
+            <input name="phone" class="mt-1 block w-full rounded-xl border border-pink-200 p-3" placeholder="+91 98765 43210">
+          </label>
+
+          <label class="block">
+            <span class="text-sm text-gray-700">What can we help with?</span>
+            <select name="topic" class="mt-1 block w-full rounded-xl border border-pink-200 p-3">
+              <option>Custom order</option>
+              <option>Corporate gifting</option>
+              <option>Book a tasting</option>
+              <option>Wholesale</option>
+              <option>Other</option>
+            </select>
+          </label>
+
+          <label class="block">
+            <span class="text-sm text-gray-700">Message</span>
+            <textarea name="message" rows="5" required class="mt-1 block w-full rounded-xl border border-pink-200 p-3" placeholder="Tell us more..."></textarea>
+          </label>
+
+          <div class="flex items-center gap-3">
+            <button type="submit" class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-choco-700 to-choco-800 text-white font-semibold shadow hover:scale-105 transform transition">Send Message</button>
+            <div id="formStatus" class="text-sm text-gray-600">We reply within one business day.</div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Right column: map + store CTA -->
+      <aside data-aos="fade-left" class="space-y-6">
+        <div class="bg-white rounded-3xl p-4 shadow-lg">
+          <h3 class="text-lg font-semibold text-choco-800">Our Store</h3>
+          <p class="text-sm text-gray-600 mt-2">Come visit our boutique for seasonal samplers and private tastings. Open Tue–Sun, 10:00–19:00.</p>
+
+          <div class="mt-4 rounded-xl overflow-hidden border border-pink-100">
+            <iframe class="w-full h-48" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.924640991366!2d73.79049687469338!3d19.076090082109233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be800c476d9b6f3%3A0x45ffb582d4b1b7b8!2sChocolate%20Shop!5e0!3m2!1sen!2sin!4v1696500000000!5m2!1sen!2sin"></iframe>
+          </div>
+
+          <div class="mt-4 flex gap-3">
+            <a id="visit" href="https://www.google.com/maps" target="_blank" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-gradient-to-r from-pink-400 to-pink-500 text-white font-medium">Open in Maps</a>
+            <a href="#shop" class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full border border-pink-200 text-pink-700">Shop</a>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 shadow-lg">
+          <h4 class="font-semibold text-choco-800">Corporate Gifting</h4>
+          <p class="text-sm text-gray-600 mt-2">Personalized boxes, logo ribbons, and bulk discounts available. Send a request and our gifting specialist will prepare options.</p>
+          <a href="#form" class="mt-4 inline-block text-sm text-choco-800 font-medium">Request a quote →</a>
+        </div>
+
+        <div class="bg-gradient-to-r from-pink-50 to-white rounded-3xl p-6 text-center border border-pink-100 shadow-inner">
+          <h5 class="font-semibold text-choco-800">Stay in the loop</h5>
+          <p class="text-sm text-gray-600 mt-2">Subscribe for new flavors and limited releases.</p>
+          <form id="subscribeForm" class="mt-4 flex gap-2 justify-center" onsubmit="return handleSubscribe(event)">
+            <input name="subEmail" type="email" required placeholder="you@example.com" class="rounded-full px-4 py-2 border border-pink-200 w-full max-w-xs">
+            <button class="rounded-full px-4 py-2 bg-pink-500 text-white font-semibold">Subscribe</button>
+          </form>
+        </div>
+
+      </aside>
+    </section>
+
+    <!-- Testimonials strip -->
+    <section class="mt-12">
+      <div data-aos="fade-up" class="bg-white rounded-3xl p-6 shadow-lg grid sm:grid-cols-3 gap-4">
+        <blockquote class="text-sm text-gray-700">“The tasting experience was heavenly — their raspberry ganache is unmatched.” — <strong class="text-choco-800">Priya R.</strong></blockquote>
+        <blockquote class="text-sm text-gray-700">“Perfect corporate gifting. On-time and beautifully packaged.” — <strong class="text-choco-800">Acme Pvt Ltd.</strong></blockquote>
+        <blockquote class="text-sm text-gray-700">“Custom flavors elevated our wedding favors. Guests loved them!” — <strong class="text-choco-800">Rahul & Meera</strong></blockquote>
+      </div>
+    </section>
+
+    <!-- CTA: Visit our store -->
+    <section class="mt-12 rounded-3xl p-8 bg-gradient-to-r from-pink-50 to-pink-100 border border-pink-100 shadow-lg text-center">
+      <h2 class="text-2xl font-semibold text-choco-800">Visit Our Boutique</h2>
+      <p class="mt-2 text-gray-600">Drop by for a free tasting and shop our seasonal collection.</p>
+      <div class="mt-4 flex justify-center gap-4">
+        <a href="https://www.google.com/maps" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-choco-700 to-choco-800 text-white font-semibold">Get Directions</a>
+        <a href="#form" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-pink-200 text-pink-700 bg-white">Contact Us</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="mt-12 py-8 text-center text-sm text-gray-600">© <span id="year"></span> Choco Boutique — handcrafted with love.</footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({duration:700, once:true});
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Fake form handlers for demo — replace with real backend integration
+    function handleSubmit(e){
+      e.preventDefault();
+      const status = document.getElementById('formStatus');
+      status.textContent = 'Sending...';
+      setTimeout(()=>{ status.textContent = 'Thanks! Your message has been sent.'; e.target.reset(); }, 900);
+      return false;
+    }
+    function handleSubscribe(e){
+      e.preventDefault();
+      alert('Thanks for subscribing — we will keep you posted!');
+      e.target.reset();
+      return false;
+    }
+  </script>
+</body>
+</html>
