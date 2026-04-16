@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add to Cart</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#4f46e5',secondary:'#f59e0b'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
+</head>
+<body class="bg-white min-h-screen">
+    <header class="border-b border-gray-100 py-4">
+        <div class="container mx-auto px-4 flex items-center justify-between">
+            <a href="#" class="text-2xl font-['Pacifico'] text-primary">logo</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="text-gray-800 hover:text-primary">Home</a>
+                <a href="#" class="text-gray-800 hover:text-primary">Shop</a>
+                <a href="#" class="text-gray-800 hover:text-primary">Categories</a>
+                <a href="#" class="text-gray-800 hover:text-primary">About</a>
+                <a href="#" class="text-gray-800 hover:text-primary">Contact</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 flex items-center justify-center">
+                    <i class="ri-search-line ri-lg"></i>
+                </div>
+                <div class="w-10 h-10 flex items-center justify-center">
+                    <i class="ri-user-line ri-lg"></i>
+                </div>
+                <div class="w-10 h-10 flex items-center justify-center relative">
+                    <i class="ri-shopping-cart-line ri-lg"></i>
+                    <span class="absolute -top-1 -right-1 bg-primary text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">3</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex flex-col md:flex-row gap-8 mb-12">
+            <!-- Product Image -->
+            <div class="md:w-1/2">
+                <div class="bg-gray-50 rounded-lg overflow-hidden">
+                    <img src="mango.png" alt="Wireless Headphones" class="w-full h-auto object-cover">
+                </div>
+                <div class="grid grid-cols-4 gap-2 mt-4">
+                    <div class="bg-gray-50 rounded cursor-pointer border-2 border-primary">
+                        <img src="mango.png" alt="Thumbnail 1" class="w-full h-auto object-cover">
+                        <p>dark chocolate</p>
+                    </div>
+                    <div class="bg-gray-50 rounded cursor-pointer">
+                        <img src="mango.png" alt="Thumbnail 2" class="w-full h-auto object-cover">
+                         <p>milk chocolate</p>
+                    </div>
+                    <div class="bg-gray-50 rounded cursor-pointer">
+                        <img src="mango.png" alt="Thumbnail 3" class="w-full h-auto object-cover">
+                         <p>white chocolate</p>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="md:w-1/2">
+                <div class="flex items-center gap-2 text-sm text-gray-600 mb-2">
+                    <a href="#" class="hover:text-primary">Home</a>
+                    <span>/</span>
+                    <a href="#" class="hover:text-primary">Audio</a>
+                    <span>/</span>
+                    <a href="#" class="hover:text-primary">Headphones</a>
+                </div>
+                
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">Premium Wireless Noise-Cancelling Headphones</h1>
+                
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="flex">
+                        <i class="ri-star-fill text-yellow-400"></i>
+                        <i class="ri-star-fill text-yellow-400"></i>
+                        <i class="ri-star-fill text-yellow-400"></i>
+                        <i class="ri-star-fill text-yellow-400"></i>
+                        <i class="ri-star-half-fill text-yellow-400"></i>
+                    </div>
+                    <span class="text-sm text-gray-600">4.8 (256 reviews)</span>
+                </div>
+                
+                <div class="mb-6">
+                    <div class="text-3xl font-bold text-gray-900 mb-1">$299.99</div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-sm line-through text-gray-500">$349.99</span>
+                        <span class="text-sm font-medium text-green-600">Save $50.00 (14%)</span>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="mb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-medium text-gray-900">Quantity</h3>
+                        <span class="text-sm text-green-600">In Stock</span>
+                    </div>
+                    <div class="flex items-center border border-gray-300 rounded w-32">
+                        <button id="decrease-qty" class="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-primary">
+                            <i class="ri-subtract-line"></i>
+                        </button>
+                        <input type="number" id="quantity" value="1" min="1" class="w-12 h-10 text-center border-none focus:outline-none text-gray-900">
+                        <button id="increase-qty" class="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-primary">
+                            <i class="ri-add-line"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col gap-3 mb-6">
+                    <button id="add-to-cart" class="w-full py-3 bg-primary text-white font-medium rounded-button flex items-center justify-center gap-2 hover:bg-primary/90 transition whitespace-nowrap">
+                        <i class="ri-shopping-cart-line"></i>
+                        shop now
+                    </button>
+                   
+                </div>
+                
+                <div class="border-t border-gray-200 pt-6 space-y-4">
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 flex items-center justify-center text-primary mt-0.5">
+                            <i class="ri-truck-line"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-900">Free Shipping</h4>
+                            <p class="text-sm text-gray-600">Estimated delivery: May 31 - June 2, 2025</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 flex items-center justify-center text-primary mt-0.5">
+                            <i class="ri-refresh-line"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-900">Easy Returns</h4>
+                            <p class="text-sm text-gray-600">30-day return policy with free return shipping</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start gap-3">
+                        <div class="w-6 h-6 flex items-center justify-center text-primary mt-0.5">
+                            <i class="ri-shield-check-line"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-900">2-Year Warranty</h4>
+                            <p class="text-sm text-gray-600">Manufacturer's warranty included with purchase</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+     
+        <!-- You Might Also Like -->
+        <div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">You Might Also Like</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition">
+                    <div class="aspect-square bg-gray-50">
+                        <img src="fruit&nuts.png" alt="Wireless Earbuds" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-medium text-gray-900 mb-1">Premium Wireless Earbuds</h3>
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="flex">
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-half-fill text-yellow-400"></i>
+                            </div>
+                            <span class="text-xs text-gray-600">(189)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="font-bold text-gray-900">$149.99</div>
+                            <button class="w-10 h-10 flex items-center justify-center text-primary border border-primary rounded-full hover:bg-primary/5">
+                                <i class="ri-shopping-cart-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition">
+                    <div class="aspect-square bg-gray-50">
+                        <img src="classic.png" alt="Bluetooth Speaker" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-medium text-gray-900 mb-1">Portable Bluetooth Speaker</h3>
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="flex">
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-line text-yellow-400"></i>
+                            </div>
+                            <span class="text-xs text-gray-600">(142)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="font-bold text-gray-900">$129.99</div>
+                            <button class="w-10 h-10 flex items-center justify-center text-primary border border-primary rounded-full hover:bg-primary/5">
+                                <i class="ri-shopping-cart-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition">
+                    <div class="aspect-square bg-gray-50">
+                        <img src="paan.png" alt="Headphone Stand" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-medium text-gray-900 mb-1">Aluminum Headphone Stand</h3>
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="flex">
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                            </div>
+                            <span class="text-xs text-gray-600">(87)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="font-bold text-gray-900">$49.99</div>
+                            <button class="w-10 h-10 flex items-center justify-center text-primary border border-primary rounded-full hover:bg-primary/5">
+                                <i class="ri-shopping-cart-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-md transition">
+                    <div class="aspect-square bg-gray-50">
+                        <img src="caramel.png" alt="Audio Cable" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-medium text-gray-900 mb-1">Premium Audio Cable</h3>
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="flex">
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-half-fill text-yellow-400"></i>
+                            </div>
+                            <span class="text-xs text-gray-600">(64)</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="font-bold text-gray-900">$29.99</div>
+                            <button class="w-10 h-10 flex items-center justify-center text-primary border border-primary rounded-full hover:bg-primary/5">
+                                <i class="ri-shopping-cart-line"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="bg-gray-50 mt-16 pt-12 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <a href="#" class="text-2xl font-['Pacifico'] text-primary mb-4 inline-block">logo</a>
+                    <p class="text-gray-600 mb-4">Premium audio products for the discerning listener. Experience sound like never before.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition">
+                            <i class="ri-twitter-x-fill"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-600 hover:bg-primary hover:text-white transition">
+                            <i class="ri-youtube-fill"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-gray-900 mb-4">Shop</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Headphones</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Earbuds</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Speakers</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Accessories</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Gift Cards</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-gray-900 mb-4">Support</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">FAQs</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Shipping Info</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Returns & Warranty</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-primary">Product Support</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-bold text-gray-900 mb-4">Newsletter</h3>
+                    <p class="text-gray-600 mb-4">Subscribe to receive updates, access to exclusive deals, and more.</p>
+                    <form class="flex mb-4">
+                        <input type="email" placeholder="Your email address" class="flex-1 py-2 px-4 border border-gray-300 rounded-l-button focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <button type="submit" class="bg-primary text-white py-2 px-4 rounded-r-button whitespace-nowrap">Subscribe</button>
+                    </form>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-5 flex items-center justify-center">
+                            <i class="ri-visa-fill text-blue-700 text-2xl"></i>
+                        </div>
+                        <div class="w-8 h-5 flex items-center justify-center">
+                            <i class="ri-mastercard-fill text-orange-500 text-2xl"></i>
+                        </div>
+                        <div class="w-8 h-5 flex items-center justify-center">
+                            <i class="ri-paypal-fill text-blue-600 text-2xl"></i>
+                        </div>
+                        <div class="w-8 h-5 flex items-center justify-center">
+                            <i class="ri-apple-fill text-gray-800 text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-200 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-gray-600 mb-4 md:mb-0">© 2025 Audio Store. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-sm text-gray-600 hover:text-primary">Privacy Policy</a>
+                    <a href="#" class="text-sm text-gray-600 hover:text-primary">Terms of Service</a>
+                    <a href="#" class="text-sm text-gray-600 hover:text-primary">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script id="quantity-controls">
+        document.addEventListener('DOMContentLoaded', function() {
+            const quantityInput = document.getElementById('quantity');
+            const decreaseBtn = document.getElementById('decrease-qty');
+            const increaseBtn = document.getElementById('increase-qty');
+            
+            decreaseBtn.addEventListener('click', function() {
+                const currentValue = parseInt(quantityInput.value);
+                if (currentValue > 1) {
+                    quantityInput.value = currentValue - 1;
+                }
+            });
+            
+            increaseBtn.addEventListener('click', function() {
+                const currentValue = parseInt(quantityInput.value);
+                quantityInput.value = currentValue + 1;
+            });
+            
+            quantityInput.addEventListener('change', function() {
+                if (this.value < 1 || isNaN(this.value)) {
+                    this.value = 1;
+                }
+            });
+        });
+    </script>
+    
+    <script id="add-to-cart-button">
+        document.addEventListener('DOMContentLoaded', function() {
+            const addToCartBtn = document.getElementById('add-to-cart');
+            
+            addToCartBtn.addEventListener('click', function() {
+                const originalText = this.innerHTML;
+                
+                // Show loading state
+                this.innerHTML = '<i class="ri-loader-4-line animate-spin"></i> Adding...';
+                this.disabled = true;
+                
+                // Simulate API call
+                setTimeout(() => {
+                    this.innerHTML = '<i class="ri-check-line"></i> Added to Cart';
+                    
+                    // Reset button after delay
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                        this.disabled = false;
+                    }, 2000);
+                }, 1000);
+            });
+        });
+    </script>
+    
+    <script id="tab-switcher">
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabDescription = document.getElementById('tab-description');
+            const tabSpecs = document.getElementById('tab-specs');
+            const tabReviews = document.getElementById('tab-reviews');
+            
+            const contentDescription = document.getElementById('tab-content-description');
+            const contentSpecs = document.getElementById('tab-content-specs');
+            const contentReviews = document.getElementById('tab-content-reviews');
+            
+            function setActiveTab(activeTab, activeContent) {
+                // Reset all tabs
+                [tabDescription, tabSpecs, tabReviews].forEach(tab => {
+                    tab.classList.remove('border-primary', 'text-primary');
+                    tab.classList.add('border-transparent', 'text-gray-600');
+                });
+                
+                // Reset all content
+                [contentDescription, contentSpecs, contentReviews].forEach(content => {
+                    content.classList.add('hidden');
+                });
+                
+                // Set active tab
+                activeTab.classList.remove('border-transparent', 'text-gray-600');
+                activeTab.classList.add('border-primary', 'text-primary');
+                
+                // Show active content
+                activeContent.classList.remove('hidden');
+            }
+            
+            tabDescription.addEventListener('click', function() {
+                setActiveTab(tabDescription, contentDescription);
+            });
+            
+            tabSpecs.addEventListener('click', function() {
+                setActiveTab(tabSpecs, contentSpecs);
+            });
+            
+            tabReviews.addEventListener('click', function() {
+                setActiveTab(tabReviews, contentReviews);
+            });
+        });
+    </script>
+</body>
+</html>
