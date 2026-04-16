@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop harilate - chocolate London</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#8B5CF6',secondary:'#EC4899'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #8B5CF6;
+            cursor: pointer;
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #8B5CF6;
+            cursor: pointer;
+            border: none;
+        }
+        .custom-checkbox {
+            position: relative;
+            padding-left: 28px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+        }
+        .custom-checkbox:hover input ~ .checkmark {
+            background-color: #e5e7eb;
+        }
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: #8B5CF6;
+            border-color: #8B5CF6;
+        }
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+        .custom-checkbox .checkmark:after {
+            left: 7px;
+            top: 3px;
+            width: 6px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        .custom-select {
+            position: relative;
+            display: inline-block;
+        }
+        .custom-select select {
+            display: none;
+        }
+        .select-selected {
+            background-color: white;
+            border: 1px solid #e5e7eb;
+        }
+        .select-selected:after {
+            position: absolute;
+            content: "";
+            top: 14px;
+            right: 10px;
+            width: 0;
+            height: 0;
+            border: 6px solid transparent;
+            border-color: #8B5CF6 transparent transparent transparent;
+        }
+        .select-selected.select-arrow-active:after {
+            border-color: transparent transparent #8B5CF6 transparent;
+            top: 7px;
+        }
+        .select-items div,
+.select-selected {
+    padding: 8px 16px;
+    cursor: pointer;
+    user-select: none;
+}
+
+        .select-items {
+            position: absolute;
+            background-color: white;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 99;
+            border: 1px solid #e5e7eb;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+        }
+        .select-hide {
+            display: none;
+        }
+        .select-items div:hover {
+            background-color: #f3f4f6;
+        }
+        .product-card:hover .quick-view {
+            opacity: 1;
+        }
+        .price-range-values {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 14px;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <a href="https://readdy.ai/home/a03473ed-0636-4431-92b1-b4930b2431d7/8866a494-bb02-42bb-985c-7fdb1b8010a1" data-readdy="true" class="text-3xl font-['Pacifico'] text-primary">chocolates</a>
+                    <span class="ml-2 text-xs text-gray-500">LONDON</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-6 mx-4 flex-1 justify-center">
+                    <a href="index.html" data-readdy="true" class="text-gray-700 hover:text-primary">Home</a>
+                    <a href="index.html" class="text-primary font-medium">Shop</a>
+                    <a href="index.html" class="text-gray-700 hover:text-primary">Collections</a>
+                    <a href="#" class="text-gray-700 hover:text-primary">About</a>
+                    <a href="#" class="text-gray-700 hover:text-primary">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <div class="relative hidden md:block">
+                        <input type="text" placeholder="Search..." class="pl-10 pr-4 py-2 rounded-full text-sm bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary/20 w-40 lg:w-64">
+                        <div class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-500">
+                            <i class="ri-search-line"></i>
+                        </div>
+                    </div>
+                  
+                    <div class="w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary">
+                        <a href="user info.html" >
+                        <i class="ri-user-line text-xl"></i>
+                        </a>
+                    </div>
+                    
+                    
+                    
+                    <div class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700">
+                        <i class="ri-menu-line text-xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Category Navigation -->
+    <div class="bg-gray-50 border-b border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="flex overflow-x-auto py-3 space-x-1 no-scrollbar">
+                <a href="shop now.html" class="whitespace-nowrap px-6 py-2 text-primary border-b-2 border-primary font-medium">All Products</a>
+                
+                <a href="index.html" data-readdy="true" class="whitespace-nowrap px-6 py-2 text-gray-600 hover:text-primary">Back to Home</a>
+            </div>
+        </div>
+    </div>
+                        
+                        <div class="absolute left-0 top-full mt-2 bg-white shadow-lg rounded-md p-4 w-64 z-10 hidden">
+                            <label class="custom-checkbox block mb-2">Floral
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="custom-checkbox block mb-2">Woody
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="custom-checkbox block mb-2">Oriental
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="custom-checkbox block mb-2">Fresh
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="custom-checkbox block">Citrus
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center">
+                    <span class="text-gray-700 mr-3">Sort by:</span>
+                    <div class="custom-select w-40">
+                        <select>
+                            <option value="0">Popularity</option>
+                            <option value="1">Price: Low to High</option>
+                            <option value="2">Price: High to Low</option>
+                            <option value="3">Newest</option>
+                        </select>
+                        <div class="select-selected rounded-button">Popularity</div>
+                        <div class="select-items select-hide">
+                            <div>Popularity</div>
+                            <div>Price: Low to High</div>
+                            <div>Price: High to Low</div>
+                            <div>Newest</div>
+                        </div>
+                    </div>
+                    
+                    <div class="ml-4 flex">
+                       <button class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-l-button">
+                      <i class="ri-layout-grid-line"></i>
+                        </button>
+                        <button class="w-10 h-10 flex items-center justify-center bg-gray-100 text-gray-500 rounded-r-button">
+                            <i class="ri-list-check"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-semibold mb-6">All flavour (8 products)</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Product 1 -->
+            <div class="product-card bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div class="relative overflow-hidden rounded-t-lg">
+                    <img src="fruit&nuts.png">
+                    <div class="quick-view absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                     <a href="fruit&nuts.html" >
+                        <button class="bg-white text-gray-800 px-4 py-2 rounded-button font-medium !rounded-button whitespace-nowrap">Quick View</button>
+                     </a>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center mb-1">
+                        <div class="text-yellow-400 flex">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-half-fill"></i>
+                        </div>
+                        <span class="text-gray-500 text-sm ml-1">(42)</span>
+                    </div>
+                    <h3 class="text-lg font-medium">fruit&nuts</h3>
+                    <p class="text-gray-600 text-sm mb-3 line-clamp-2">A rich chocolate treat packed with crunchy nuts and sweet dried fruits. Perfect for snacking or sharing!</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-primary font-semibold">₹499</span>
+                        <a href="fruit&nuts.html">
+                        <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button !rounded-button whitespace-nowrap">shop now</button>
+                   </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+     <div class="product-card bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div class="relative overflow-hidden rounded-t-lg">
+                    <img src="orange.png">
+                    <div class="quick-view absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                        <a href="orange.html" >
+                            <button class="bg-white text-gray-800 px-4 py-2 rounded-button font-medium !rounded-button whitespace-nowrap">Quick View</button>
+                        </a>
+                        </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center mb-1">
+                        <div class="text-yellow-400 flex">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-half-fill"></i>
+                        </div>
+                        <span class="text-gray-500 text-sm ml-1">(42)</span>
+                    </div>
+                    <h3 class="text-lg font-medium">orange</h3>
+                    <p class="text-gray-600 text-sm mb-3 line-clamp-2">Smooth chocolate infused with a zesty orange twist. A perfect blend of sweet and citrusy delight!</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-primary font-semibold">₹499</span>
+                         <a href="orange.html">
+                        <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button !rounded-button whitespace-nowrap">shop now</button>
+                   </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="product-card bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div class="relative overflow-hidden rounded-t-lg">
+                    <img src="classic.png">
+                    <div class="quick-view absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                       <a href="classic.html" >
+                        <button class="bg-white text-gray-800 px-4 py-2 rounded-button font-medium !rounded-button whitespace-nowrap">Quick View</button>
+                       </a>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center mb-1">
+                        <div class="text-yellow-400 flex">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-line"></i>
+                        </div>
+                        <span class="text-gray-500 text-sm ml-1">(36)</span>
+                    </div>
+                    <h3 class="text-lg font-medium">classic</h3>
+                    <p class="text-gray-600 text-sm mb-3 line-clamp-2">Classic Flavoured Chocolate
+Rich, creamy chocolate with a timeless taste. Pure, smooth, and simply delicious!</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-primary font-semibold">₹499</span>
+                         <a href="classic.html">
+                        <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button !rounded-button whitespace-nowrap">shop now</button>
+                   </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="product-card bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div class="relative overflow-hidden rounded-t-lg">
+                    <img src="rose.png">
+                    <div class="quick-view absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                    <a href="rose.html" >
+                        <button class="bg-white text-gray-800 px-4 py-2 rounded-button font-medium !rounded-button whitespace-nowrap">Quick View</button>
+                    </a>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center mb-1">
+                        <div class="text-yellow-400 flex">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-half-fill"></i>
+                        </div>
+                        <span class="text-gray-500 text-sm ml-1">(52)</span>
+                    </div>
+                    <h3 class="text-lg font-medium">rose</h3>
+                    <p class="text-gray-600 text-sm mb-3 line-clamp-2">Rose Flavoured Chocolate
+Delicate rose essence blended with smooth chocolate for a floral, aromatic treat. Elegant and indulgent!</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-primary font-semibold">₹499</span>
+                         <a href="rose.html">
+                            <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button !rounded-button whitespace-nowrap">shop now</button>
+                    </a>
+                        </div>
+                </div>
+            </div>
+            
+            <!-- Product 5 -->
+            <div class="product-card bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div class="relative overflow-hidden rounded-t-lg">
+                    <img src="raspberry.png">
+                    <div class="quick-view absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                       <a href="raspberry.html" >
+                        <button class="bg-white text-gray-800 px-4 py-2 rounded-button font-medium !rounded-button whitespace-nowrap">Quick View</button>
+                    </a>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center mb-1">
+                        <div class="text-yellow-400 flex">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-line"></i>
+                        </div>
+                        <span class="text-gray-500 text-sm ml-1">(29)</span>
+                    </div>
+                    <h3 class="text-lg font-medium">raspberry</h3>
+                    <p class="text-gray-600 text-sm mb-3 line-clamp-2">Raspberry Flavoured Chocolate
+Lush raspberry notes meet rich chocolate in a sweet and tangy fusion. Bold, fruity, and irresistible!</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-primary font-semibold">₹499</span>
+                         <a href="raspberry.html">
+                            <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button !rounded-button whitespace-nowrap">shop now</button>
+</a>
+                        </div>
+                </div>
+            </div>
+            
+            <!-- Product 6 -->
+            <div class="product-card bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div class="relative overflow-hidden rounded-t-lg">
+                    <img src="paan.png">
+                    <div class="quick-view absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                       <a href="paan.html" >
+                        <button class="bg-white text-gray-800 px-4 py-2 rounded-button font-medium !rounded-button whitespace-nowrap">Quick View</button>
+                    </a>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center mb-1">
+                        <div class="text-yellow-400 flex">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                        </div>
+                        <span class="text-gray-500 text-sm ml-1">(64)</span>
+                    </div>
+                    <h3 class="text-lg font-medium">paan</h3>
+                    <p class="text-gray-600 text-sm mb-3 line-clamp-2">A unique blend of rich chocolate and aromatic betel leaf, offering a bold, refreshing twist. Traditional taste with a modern touch!</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-primary font-semibold">₹499</span>
+                         <a href="paan.html">
+                        <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button !rounded-button whitespace-nowrap">shop now</button>
+                   </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 7 -->
+            <div class="product-card bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div class="relative overflow-hidden rounded-t-lg">
+                    <img src="mango.png">
+                    <div class="quick-view absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                        <a href="mango.html" >
+                        <button class="bg-white text-gray-800 px-4 py-2 rounded-button font-medium !rounded-button whitespace-nowrap">Quick View</button>
+                   </a>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center mb-1">
+                        <div class="text-yellow-400 flex">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-line"></i>
+                        </div>
+                        <span class="text-gray-500 text-sm ml-1">(31)</span>
+                    </div>
+                    <h3 class="text-lg font-medium">mango</h3>
+                    <p class="text-gray-600 text-sm mb-3 line-clamp-2">A unique blend of rich chocolate and aromatic betel leaf, offering a bold, refreshing twist. Traditional taste with a modern touch!</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-primary font-semibold">₹499</span>
+                         <a href="mango.html">
+                        <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button !rounded-button whitespace-nowrap">shop now</button>
+                   </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 8 -->
+            <div class="product-card bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+                <div class="relative overflow-hidden rounded-t-lg">
+                    <img src="caramel.png">
+                    <div class="quick-view absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 transition-opacity duration-300">
+                       <a href="caramel.html" >
+                        <button class="bg-white text-gray-800 px-4 py-2 rounded-button font-medium !rounded-button whitespace-nowrap">Quick View</button>
+                       </a>
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center mb-1">
+                        <div class="text-yellow-400 flex">
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-fill"></i>
+                            <i class="ri-star-half-fill"></i>
+                            <i class="ri-star-line"></i>
+                        </div>
+                        <span class="text-gray-500 text-sm ml-1">(27)</span>
+                    </div>
+                    <h3 class="text-lg font-medium">caramel</h3>
+                    <p class="text-gray-600 text-sm mb-3 line-clamp-2">Creamy chocolate filled with rich, buttery caramel. Smooth, sweet, and irresistibly indulgent!</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-primary font-semibold">₹499</span>
+                         <a href="caramel.html">
+                        <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-button !rounded-button whitespace-nowrap">shop now</button>
+                    </a>
+                    </div>
+                </div>
+            </div>
+            
+          
+        
+        <!-- Pagination -->
+        <div class="flex justify-center mt-12">
+            <nav class="flex items-center">
+                <a href="#" class="w-10 h-10 flex items-center justify-center rounded-l-button border border-gray-300 text-gray-600 hover:bg-gray-50">
+                    <i class="ri-arrow-left-s-line"></i>
+                </a>
+                <a href="#" class="w-10 h-10 flex items-center justify-center border-t border-b border-gray-300 bg-primary text-white">1</a>
+                <a href="#" class="w-10 h-10 flex items-center justify-center border-t border-b border-gray-300 text-gray-600 hover:bg-gray-50">2</a>
+                <a href="#" class="w-10 h-10 flex items-center justify-center border-t border-b border-gray-300 text-gray-600 hover:bg-gray-50">3</a>
+                <a href="#" class="w-10 h-10 flex items-center justify-center rounded-r-button border border-gray-300 text-gray-600 hover:bg-gray-50">
+                    <i class="ri-arrow-right-s-line"></i>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-['Pacifico'] mb-4">harilte</h3>
+                    <p class="text-gray-400 mb-4">Discover the perfect flavour to express your unique personality. Luxury experience for every occasion.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://youtube.com/@samarthtanpure-n5n?feature=shared" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="ri-youtube-fill"></i>
+                        </a>
+                        <a href="https://www.instagram.com/harilate_chocolates?igsh=MXNud2NpbjNqb256ag==" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="ri-twitter-x-line"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="ri-pinterest-line"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-medium mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" data-readdy="true" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Shop</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-medium mb-4">Categories</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">dark chocolate</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">milk chocolate</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">white chocolate</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Gift Sets</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">love</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-medium mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to get special offers, free giveaways, and new arrivals.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="bg-gray-800 text-white px-4 py-2 rounded-l-button w-full border-none focus:outline-none focus:ring-2 focus:ring-primary">
+                        <button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-r-button !rounded-button whitespace-nowrap">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2025 chocolate. All rights reserved.</p>
+                    <div class="flex space-x-4">
+                        <div class="w-10 h-6 flex items-center justify-center text-white">
+                            <i class="ri-visa-fill text-xl"></i>
+                        </div>
+                        <div class="w-10 h-6 flex items-center justify-center text-white">
+                            <i class="ri-mastercard-fill text-xl"></i>
+                        </div>
+                        <div class="w-10 h-6 flex items-center justify-center text-white">
+                            <i class="ri-paypal-fill text-xl"></i>
+                        </div>
+                        <div class="w-10 h-6 flex items-center justify-center text-white">
+                            <i class="ri-apple-fill text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script id="dropdownScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Custom select dropdown
+            var x, i, j, l, ll, selElmnt, a, b, c;
+            x = document.getElementsByClassName("custom-select");
+            l = x.length;
+            for (i = 0; i < l; i++) {
+                selElmnt = x[i].getElementsByTagName("select")[0];
+                ll = selElmnt.length;
+                a = document.getElementsByClassName("select-selected")[i];
+                
+                for (j = 0; j < ll; j++) {
+                    c = document.getElementsByClassName("select-items")[i].getElementsByTagName("div")[j];
+                    c.addEventListener("click", function(e) {
+                        var y, i, k, s, h, sl, yl;
+                        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                        sl = s.length;
+                        h = this.parentNode.previousSibling;
+                        for (i = 0; i < sl; i++) {
+                            if (s.options[i].innerHTML == this.innerHTML) {
+                                s.selectedIndex = i;
+                                h.innerHTML = this.innerHTML;
+                                y = this.parentNode.getElementsByClassName("same-as-selected");
+                                yl = y.length;
+                                for (k = 0; k < yl; k++) {
+                                    y[k].removeAttribute("class");
+                                }
+                                this.setAttribute("class", "same-as-selected");
+                                break;
+                            }
+                        }
+                        h.click();
+                    });
+                }
+                
+                a.addEventListener("click", function(e) {
+                    e.stopPropagation();
+                    closeAllSelect(this);
+                    this.nextSibling.classList.toggle("select-hide");
+                    this.classList.toggle("select-arrow-active");
+                });
+            }
+            
+            function closeAllSelect(elmnt) {
+                var x, y, i, xl, yl, arrNo = [];
+                x = document.getElementsByClassName("select-items");
+                y = document.getElementsByClassName("select-selected");
+                xl = x.length;
+                yl = y.length;
+                for (i = 0; i < yl; i++) {
+                    if (elmnt == y[i]) {
+                        arrNo.push(i)
+                    } else {
+                        y[i].classList.remove("select-arrow-active");
+                    }
+                }
+                for (i = 0; i < xl; i++) {
+                    if (arrNo.indexOf(i)) {
+                        x[i].classList.add("select-hide");
+                    }
+                }
+            }
+            
+            document.addEventListener("click", closeAllSelect);
+        });
+    </script>
+
+    <script id="filterScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filter dropdowns
+            const filterButtons = document.querySelectorAll('.filter-button');
+            
+            filterButtons.forEach(button => {
+                const dropdown = button.nextElementSibling;
+                
+                button.addEventListener('click', () => {
+                    const isOpen = !dropdown.classList.contains('hidden');
+                    
+                    // Close all dropdowns
+                    document.querySelectorAll('.filter-dropdown').forEach(d => {
+                        d.classList.add('hidden');
+                    });
+                    
+                    // Toggle current dropdown
+                    if (!isOpen) {
+                        dropdown.classList.remove('hidden');
+                    }
+                });
+            });
+            
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.filter-button') && !e.target.closest('.filter-dropdown')) {
+                    document.querySelectorAll('.filter-dropdown').forEach(d => {
+                        d.classList.add('hidden');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
