@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us — CocoaLuxe Chocolates</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{--accent:#c7367d;--muted:#a855f7}
+    .bg-cream{background:linear-gradient(180deg,#fff0f7 0%, #ffe6ef 100%)}
+    .glass{backdrop-filter: blur(6px); background: rgba(255,255,255,0.55)}
+    .card-shadow{box-shadow: 0 8px 30px rgba(199,54,125,0.15)}
+    .hero-shape{clip-path: polygon(0 0,100% 0,100% 85%,0 100%)}
+    .fade-up{opacity:0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease}
+    .in-view{opacity:1; transform: translateY(0)}
+    .counter{font-variant-numeric: tabular-nums}
+  </style>
+</head>
+<body class="bg-cream text-gray-900 antialiased">
+  <header class="relative overflow-hidden">
+    <div class="hero-shape bg-gradient-to-r from-pink-100 to-pink-50 py-20">
+      <div class="max-w-6xl mx-auto px-6 lg:px-8 flex items-center gap-8 lg:gap-12">
+        <div class="w-full lg:w-1/2">
+          <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight text-pink-700">About CocoaLuxe</h1>
+          <p class="mt-4 text-lg text-gray-700">We craft handcrafted, bean-to-bar chocolates celebrating flavor, sustainability, and small-batch artistry. From ethically-sourced beans to beautiful packaging — every step is made with love.</p>
+          <div class="mt-6 flex gap-3">
+            <a href="#our-mission" class="inline-flex items-center px-5 py-3 rounded-2xl bg-gradient-to-r from-pink-400 to-pink-500 text-white text-sm font-semibold shadow">Our Mission</a>
+            <a href="#gallery" class="inline-flex items-center px-5 py-3 rounded-2xl border border-pink-300 text-sm font-medium text-pink-700">See Gallery</a>
+          </div>
+        </div>
+        <div class="hidden lg:block lg:w-1/2">
+          <div class="grid grid-cols-2 gap-4">
+            <img src="images/choco-shop-1.jpg" alt="Artisan truffles on marble" class="rounded-2xl object-cover h-48 w-full card-shadow" loading="lazy">
+            <img src="images/choco-shop-2.jpg" alt="Chocolate bars stacked" class="rounded-2xl object-cover h-48 w-full card-shadow" loading="lazy">
+            <img src="images/choco-shop-3.jpg" alt="Packaging and ribbon" class="rounded-2xl object-cover h-48 w-full card-shadow" loading="lazy">
+            <img src="images/choco-shop-4.jpg" alt="Cocoa beans and tools" class="rounded-2xl object-cover h-48 w-full card-shadow" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 lg:px-8 -mt-6">
+    <section id="our-mission" class="grid lg:grid-cols-3 gap-8 items-start">
+      <div class="lg:col-span-2 bg-white rounded-3xl p-8 glass card-shadow fade-up" data-anim>
+        <h2 class="text-2xl font-bold text-pink-700">Our Story</h2>
+        <p class="mt-4 text-gray-700 leading-relaxed">Founded in 2017 by chocolatiers who fell in love with single-origin beans, CocoaLuxe began as a weekend experiment and grew into a cherished neighborhood atelier. Our philosophy blends classic techniques with contemporary flavors — think saffron ganache, tamarind caramel, and spiced mango truffles.</p>
+
+        <div class="mt-6 grid sm:grid-cols-3 gap-4">
+          <div class="text-center">
+            <div class="text-3xl font-extrabold counter text-pink-600" data-target="120">0</div>
+            <div class="text-sm text-gray-500">Flavors Created</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-extrabold counter text-pink-600" data-target="35000">0</div>
+            <div class="text-sm text-gray-500">Boxes Sold</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-extrabold counter text-pink-600" data-target="18">0</div>
+            <div class="text-sm text-gray-500">Awards Won</div>
+          </div>
+        </div>
+
+        <h3 class="mt-8 text-lg font-semibold text-pink-700">Sourcing & Sustainability</h3>
+        <p class="mt-2 text-gray-700">We partner directly with smallholder farms in Ghana and Ecuador. Our direct-trade model ensures fair pay and traceability — each limited-edition bar includes a QR code linking to the farm story.</p>
+
+        <div class="mt-6 flex gap-3">
+          <a href="#contact" class="px-4 py-2 border rounded-md text-sm text-pink-600 border-pink-300">Contact Us</a>
+          <a href="#shop" class="px-4 py-2 rounded-md text-sm bg-pink-100 text-pink-700">Visit Shop</a>
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <div class="bg-white rounded-2xl p-4 card-shadow fade-up" data-anim>
+          <h4 class="font-semibold text-pink-700">Milestones</h4>
+          <ol class="mt-3 text-sm text-gray-600 space-y-2">
+            <li><strong>2017</strong> — First batch sold at local market.</li>
+            <li><strong>2019</strong> — Opened flagship store.</li>
+            <li><strong>2022</strong> — Launch of bean-to-bar series.</li>
+            <li><strong>2024</strong> — International tasting event.</li>
+          </ol>
+        </div>
+
+        <div class="bg-white rounded-2xl p-4 card-shadow fade-up" data-anim>
+          <h4 class="font-semibold text-pink-700">Values</h4>
+          <ul class="mt-3 text-sm text-gray-600 space-y-2">
+            <li>Direct trade + fair pay</li>
+            <li>Zero-waste production practices</li>
+            <li>Seasonal & creative flavoring</li>
+            <li>Community-first approach</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <section id="team" class="mt-12">
+      <h2 class="text-2xl font-bold text-pink-700">Meet the Team</h2>
+      <p class="text-gray-600 mt-2">A small, passionate team of chocolatiers, designers, and operations specialists.</p>
+
+      <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <figure class="bg-white p-4 rounded-2xl text-center glass card-shadow fade-up" data-anim>
+          <img src="images/team-anna.jpg" alt="Anna - Head Chocolatier" class="mx-auto rounded-full h-28 w-28 object-cover border-4 border-pink-200">
+          <figcaption class="mt-3">
+            <div class="font-semibold text-pink-700">Anna Morales</div>
+            <div class="text-sm text-gray-500">Head Chocolatier</div>
+          </figcaption>
+        </figure>
+
+        <figure class="bg-white p-4 rounded-2xl text-center glass card-shadow fade-up" data-anim>
+          <img src="images/team-raj.jpg" alt="Raj - Co-Founder" class="mx-auto rounded-full h-28 w-28 object-cover border-4 border-pink-200">
+          <figcaption class="mt-3">
+            <div class="font-semibold text-pink-700">Raj Patel</div>
+            <div class="text-sm text-gray-500">Co-Founder</div>
+          </figcaption>
+        </figure>
+
+        <figure class="bg-white p-4 rounded-2xl text-center glass card-shadow fade-up" data-anim>
+          <img src="images/team-lea.jpg" alt="Lea - Packaging & Design" class="mx-auto rounded-full h-28 w-28 object-cover border-4 border-pink-200">
+          <figcaption class="mt-3">
+            <div class="font-semibold text-pink-700">Lea Chen</div>
+            <div class="text-sm text-gray-500">Packaging & Design</div>
+          </figcaption>
+        </figure>
+
+        <figure class="bg-white p-4 rounded-2xl text-center glass card-shadow fade-up" data-anim>
+          <img src="images/team-miguel.jpg" alt="Miguel - Operations" class="mx-auto rounded-full h-28 w-28 object-cover border-4 border-pink-200">
+          <figcaption class="mt-3">
+            <div class="font-semibold text-pink-700">Miguel Santos</div>
+            <div class="text-sm text-gray-500">Operations</div>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="gallery" class="mt-12">
+      <h2 class="text-2xl font-bold text-pink-700">Gallery</h2>
+      <p class="text-gray-600 mt-2">Moments from our kitchen and store.</p>
+
+      <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-4">
+        <button class="group overflow-hidden rounded-xl border-2 border-pink-200" data-large="images/gallery-1.jpg" aria-label="Open photo 1">
+          <img src="images/gallery-1-thumb.jpg" alt="Close-up of bonbons" class="w-full h-40 object-cover rounded-xl">
+        </button>
+        <button class="group overflow-hidden rounded-xl border-2 border-pink-200" data-large="images/gallery-2.jpg" aria-label="Open photo 2">
+          <img src="images/gallery-2-thumb.jpg" alt="Chocolate bar and cocoa nibs" class="w-full h-40 object-cover rounded-xl">
+        </button>
+        <button class="group overflow-hidden rounded-xl border-2 border-pink-200" data-large="images/gallery-3.jpg" aria-label="Open photo 3">
+          <img src="images/gallery-3-thumb.jpg" alt="Truffle making" class="w-full h-40 object-cover rounded-xl">
+        </button>
+        <button class="group overflow-hidden rounded-xl border-2 border-pink-200" data-large="images/gallery-4.jpg" aria-label="Open photo 4">
+          <img src="images/gallery-4-thumb.jpg" alt="Storefront display" class="w-full h-40 object-cover rounded-xl">
+        </button>
+        <button class="group overflow-hidden rounded-xl border-2 border-pink-200" data-large="images/gallery-5.jpg" aria-label="Open photo 5">
+          <img src="images/gallery-5-thumb.jpg" alt="Packaging process" class="w-full h-40 object-cover rounded-xl">
+        </button>
+        <button class="group overflow-hidden rounded-xl border-2 border-pink-200" data-large="images/gallery-6.jpg" aria-label="Open photo 6">
+          <img src="images/gallery-6-thumb.jpg" alt="Cocoa harvesting" class="w-full h-40 object-cover rounded-xl">
+        </button>
+      </div>
+    </section>
+
+    <section class="mt-12 bg-white rounded-3xl p-8 glass card-shadow text-center">
+      <h3 class="text-xl font-semibold text-pink-700">Want to taste the story?</h3>
+      <p class="text-gray-600 mt-2">Book a tasting or visit our shop for seasonal samplers.</p>
+      <div class="mt-4 flex justify-center gap-3">
+        <a id="book-btn" href="#" class="px-6 py-3 rounded-full bg-pink-400 hover:bg-pink-500 text-white font-semibold">Book a Tasting</a>
+        <a href="#shop" class="px-6 py-3 rounded-full border border-pink-300 text-pink-700">Shop Now</a>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="lightbox" class="fixed inset-0 hidden items-center justify-center bg-black/60 z-50">
+    <div class="max-w-4xl w-full p-4">
+      <button id="lb-close" class="mb-4 text-white">Close</button>
+      <img id="lb-img" src="" alt="" class="w-full rounded-xl">
+    </div>
+  </div>
+
+  <footer class="mt-12 py-8 text-center text-sm text-pink-600">© <span id="year"></span> CocoaLuxe Chocolates — handcrafted with care.</footer>
+
+  <script>
+    const observers = [];
+    document.querySelectorAll('[data-anim]').forEach(el=>{
+      el.classList.add('fade-up');
+      const io = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{ if(e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
+      },{threshold:0.12});
+      io.observe(el);
+      observers.push(io);
+    });
+
+    const counters = document.querySelectorAll('.counter');
+    const runCounter = (el)=>{
+      const target = +el.dataset.target;
+      const duration = 1600;
+      let start = 0; const stepTime = Math.max(Math.floor(duration/target), 8);
+      const timer = setInterval(()=>{
+        start += Math.max(1, Math.floor(target/ (duration/stepTime)));
+        if(start>=target){ el.textContent = target.toLocaleString(); clearInterval(timer);} else el.textContent = start.toLocaleString();
+      }, stepTime);
+    };
+    const counterObserver = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ runCounter(e.target); counterObserver.unobserve(e.target); } });
+    },{threshold:0.5});
+    counters.forEach(c=>counterObserver.observe(c));
+
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    document.querySelectorAll('#gallery button').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const large = btn.dataset.large;
+        lbImg.src = large; lbImg.alt = btn.querySelector('img').alt;
+        lightbox.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.getElementById('lb-close').addEventListener('click', ()=>{ lightbox.classList.add('hidden'); document.body.style.overflow = ''; lbImg.src=''; });
+    lightbox.addEventListener('click', (e)=>{ if(e.target===lightbox) { lightbox.classList.add('hidden'); document.body.style.overflow = ''; lbImg.src=''; } });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && !lightbox.classList.contains('hidden')){ lightbox.classList.add('hidden'); document.body.style.overflow = ''; lbImg.src=''; } });
+  </script>
+</body>
+</html>
