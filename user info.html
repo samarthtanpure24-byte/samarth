@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROFILE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    font-family:'Inter',sans-serif;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* VIDEO */
+.video-bg{
+    position:fixed;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-3;
+}
+
+/* OVERLAY */
+.overlay{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:linear-gradient(135deg, rgba(94,90,90,0.85), rgba(0,0,0,0.9));
+    z-index:-2;
+}
+
+/* GLOW */
+.bg{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+    radial-gradient(circle at 20% 20%, #ffb34722, transparent 40%),
+    radial-gradient(circle at 80% 80%, #c68c5322, transparent 40%);
+    z-index:-1;
+}
+
+/* HEADER */
+.header{
+    text-align:center;
+    padding:25px;
+    font-size:22px;
+    font-weight:700;
+    color:#ffd700;
+}
+
+/* CARD */
+.card{
+    max-width:900px;
+    margin:0 auto 40px;
+    padding:25px;
+    border-radius:25px;
+    background:rgba(255,255,255,0.06);
+    backdrop-filter: blur(25px);
+    box-shadow:0 30px 80px rgba(0,0,0,0.8);
+}
+
+/* PROFILE */
+.profile{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    margin-bottom:20px;
+}
+
+/* AVATAR */
+.avatar{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    overflow:hidden;
+    background:linear-gradient(45deg,#ffb347,#c68c53);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    cursor:pointer;
+}
+
+.avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.avatar span{
+    position:absolute;
+    font-size:28px;
+    font-weight:bold;
+    color:black;
+}
+
+/* CAMERA ICON */
+.cameraIcon{
+    position:absolute;
+    bottom:0;
+    right:0;
+    background:black;
+    border-radius:50%;
+    padding:5px;
+    font-size:12px;
+    color:white;
+    border:2px solid #fff;
+}
+
+/* SECTION */
+.section{margin-top:20px;}
+.title{font-size:13px;color:#ffddb3;margin-bottom:8px;}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+/* INPUT */
+input, select, textarea{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:12px;
+    background:rgba(255,255,255,0.1);
+    color:white;
+    outline:none;
+    transition:0.3s;
+}
+
+input:focus, textarea:focus{
+    box-shadow:0 0 12px #ffb347;
+    transform:scale(1.02);
+}
+
+/* BUTTON */
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(45deg,#4b2e2e,#c68c53);
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+    transition:0.3s;
+    margin-top:10px;
+}
+
+button:hover{
+    transform:scale(1.03);
+    box-shadow:0 0 20px #ffb347;
+}
+
+/* STATUS */
+#msg, #locStatus{
+    text-align:center;
+    margin-top:10px;
+    color:#90ee90;
+    font-size:13px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- VIDEO -->
+<video autoplay muted loop playsinline class="video-bg">
+    <source src="videos.mp4">
+</video>
+
+<div class="overlay"></div>
+<div class="bg"></div>
+
+<div class="header">🍫PROFILE</div>
+
+<div class="card">
+
+<!-- PROFILE -->
+<div class="profile">
+    <div class="avatar" onclick="document.getElementById('photo').click()">
+        <img id="avatarImg" style="display:none;">
+        <span id="avatarText">U</span>
+        <div class="cameraIcon">📷</div>
+    </div>
+
+    <div>
+        <h2 id="nameTitle">User Name</h2>
+        <p style="color:#aaa;">USER</p>
+    </div>
+</div>
+
+<input type="file" id="photo" accept="image/*" capture="camera" style="display:none;">
+
+<form id="form">
+
+<div class="section">
+<button type="button" onclick="getLocation()">📍 Detect My Location</button>
+<p id="locStatus"></p>
+</div>
+
+<div class="section">
+<div class="title">PERSONAL INFO</div>
+<div class="grid">
+<input placeholder="First Name" id="firstName">
+<input placeholder="Last Name" id="lastName">
+<input placeholder="Mobile" id="mobile">
+<input placeholder="Email" id="email">
+</div>
+</div>
+
+<div class="section">
+<div class="title">ADDRESS</div>
+<input placeholder="House / Flat" id="address1">
+<input placeholder="Street / Area" id="address2" style="margin-top:10px;">
+<div class="grid" style="margin-top:10px;">
+<input placeholder="City" id="city">
+<input placeholder="State" id="state">
+<input placeholder="Pincode" id="pincode">
+<input placeholder="Country" value="India">
+</div>
+</div>
+
+<div class="section">
+<div class="title">EXTRA</div>
+<div class="grid">
+<input placeholder="Job" id="job">
+<input type="date" id="dob">
+<select id="gender">
+<option>Male</option>
+<option>Female</option>
+<option>Other</option>
+</select>
+<input placeholder="Language" id="lang">
+</div>
+<textarea placeholder="About you..." id="about" style="margin-top:10px;"></textarea>
+</div>
+
+<button type="submit">SAVE PROFILE</button>
+<p id="msg">Saved Successfully 🚀</p>
+
+</form>
+</div>
+
+<script>
+const form=document.getElementById("form");
+const msg=document.getElementById("msg");
+const nameTitle=document.getElementById("nameTitle");
+
+const avatarImg=document.getElementById("avatarImg");
+const avatarText=document.getElementById("avatarText");
+const photoInput=document.getElementById("photo");
+const cameraIcon=document.querySelector(".cameraIcon");
+
+/* LOAD DATA */
+const saved=localStorage.getItem("profile");
+if(saved){
+    const d=JSON.parse(saved);
+
+    for(let k in d){
+        if(document.getElementById(k)){
+            document.getElementById(k).value=d[k];
+        }
+    }
+
+    if(d.firstName){
+        nameTitle.innerText=d.firstName+" "+(d.lastName||"");
+        avatarText.innerText=d.firstName.charAt(0).toUpperCase();
+    }
+}
+
+/* LOAD PHOTO */
+const savedPhoto=localStorage.getItem("profilePhoto");
+if(savedPhoto){
+    avatarImg.src=savedPhoto;
+    avatarImg.style.display="block";
+    avatarText.style.display="none";
+    cameraIcon.style.display="none";
+}
+
+/* SAVE FORM */
+form.addEventListener("submit",(e)=>{
+    e.preventDefault();
+
+    const d={
+        firstName:firstName.value,
+        lastName:lastName.value,
+        mobile:mobile.value,
+        email:email.value,
+        address1:address1.value,
+        address2:address2.value,
+        city:city.value,
+        state:state.value,
+        pincode:pincode.value,
+        job:job.value,
+        dob:dob.value,
+        gender:gender.value,
+        lang:lang.value,
+        about:about.value
+    };
+
+    localStorage.setItem("profile",JSON.stringify(d));
+
+    nameTitle.innerText=d.firstName+" "+d.lastName;
+
+    msg.style.display="block";
+    setTimeout(()=>msg.style.display="none",2500);
+});
+
+/* IMAGE UPLOAD */
+photoInput.addEventListener("change",function(){
+    const file=this.files[0];
+
+    if(file){
+        const reader=new FileReader();
+
+        reader.onload=function(){
+            avatarImg.src=reader.result;
+            avatarImg.style.display="block";
+            avatarText.style.display="none";
+            cameraIcon.style.display="none";
+
+            localStorage.setItem("profilePhoto",reader.result);
+        };
+
+        reader.readAsDataURL(file);
+    }
+});
+
+/* LOCATION */
+function getLocation(){
+    const status=document.getElementById("locStatus");
+    status.innerText="Detecting location...";
+
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(async (pos)=>{
+            const lat=pos.coords.latitude;
+            const lon=pos.coords.longitude;
+
+            status.innerText=`Found ✔ ${lat.toFixed(2)}, ${lon.toFixed(2)}`;
+
+            try{
+                const res=await fetch(
+                    `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`
+                );
+
+                const data=await res.json();
+                const a=data.address;
+
+                if(a){
+                    if(a.city) city.value=a.city;
+                    if(a.state) state.value=a.state;
+                    if(a.postcode) pincode.value=a.postcode;
+                }
+
+            }catch(e){
+                status.innerText="Auto fill failed";
+            }
+
+        },()=>{
+            status.innerText="Permission denied";
+        });
+    }
+}
+</script>
+
+</body>
+</html>
